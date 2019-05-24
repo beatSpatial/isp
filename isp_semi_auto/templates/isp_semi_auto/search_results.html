@@ -1,0 +1,29 @@
+<!-- This is the search_results.html sub-template -->
+
+{% if items %}
+	{% for item in items %}
+	<tr colspan="5">
+		<td>{{ item.lastname }}, {{ item.firstname }}, {{ item.preferred }}</td>
+	</tr>
+	<tr>
+		<th scope="col">Standard</th>
+		<th scope="col">Follow-up 1</th>
+		<th scope="col">Follow-up 2a</th>
+		<th scope="col">Follow-up 2b</th>
+		<th scope="col">Exam</th>
+	</tr>
+	<tr>
+		<td>{{ item.std_date }}</td>
+		<td>{{ item.std_date }}</td>
+		<td>{{ item.std_date }}</td>
+		<td>{{ item.std_date }}</td>
+		<td>{{ item.std_date }}</td>
+	</tr>
+
+
+
+
+	{% endfor %}
+{% endif %}
+
+

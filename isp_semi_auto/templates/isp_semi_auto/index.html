@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+    <div class="col-md-6">
+        <form id="teacher" role="form" method="get"> <!--FIXME Do I need an id on this form? -->
+            <input class="form-control"
+               name="js-get-teachers"
+               id="js-get-teachers"
+               type="search"
+               ic-get-from="{% url 'get-teachers' %}"
+               placeholder="Teacher surname, first name or preferred"
+               />
+            <br>
+        </form>
+    </div>
+
+    <div id="js-subjects" class="col-md-6" >
+        <div id="js-subject-options" js-one-subject js-render-subject-radio-url="{% url 'get-subjects' %}">
+        </div>
+        <hr>
+    </div>
+
+
+    <div id="js-isps" class="col-md-6" style="display:none;">
+        <div id="js-isp-options" js-render-isp-radio-url="{% url 'get-isp-options' %}">
+
+        </div>
+        <hr>
+    </div>
+
+    <div id="js-attendance" style="display:none;" class="col-md-6" js-get-attendance-options-url="{% url 'get-attendance-options' %}">
+        <select multiple id="js-attendance-options" style="width: 100%"></select>
+        <hr>
+    </div>
+
+    <!-- Might want to get assignments seperately -->
+
+    <div id="js-assignment" style="display:none;" class="col-md-6" js-get-assignments-url="{% url 'get-assignments' %}" >
+        <select multiple id="js-assignment-choices" style="width: 100%"></select>
+        <hr>
+    </div>
+
+    <div class="col-md-6">
+        <form id="student" role="form" method="get"> <!--FIXME Do I need an id on this form? -->
+            <input class="form-control"
+            name="js-get-students"
+            id="js-get-students"
+            type="search"
+            placeholder="Student surname, first name or preferred"
+            ic-get-from="{% url 'get-students' %}"
+            disabled />
+        </form>
+        <hr>
+    </div>
+
+    <span id="js-indicator-isp" style="display:none">
+      <i class="fa fa-spinner fa-spin"></i> Generating ISP...
+    </span>
+
+    <br>
+
+    <div class="col-md-12">
+        <div id="js-results"></div>
+        <div class="form-group">
+            <div class="form-control" id="js-tui-editor" js-fill-out-isp-url="{% url 'fill-out-isp' %}"></div>
+        </div>
+
+
+        <div class="form-group shadow-textarea">
+          <textarea class="form-control z-depth-1" id="inspire" rows="3" placeholder="Motivate student with words here..."></textarea>
+        </div>
+
+
+        <button id="js-clipper" class="btn btn-large btn-primary">
+            Copy ISP to clipboard - open myFY
+            <i class="fas fa-clipboard-list"></i>
+        </button>
+        <img src="{% static 'images/wechat-128.png' %}" height="37" width="37">
+        <img src="{% static 'images/wa.svg' %}" height="37" width="37">
+        <img src="{% static 'images/icon-weibo.png' %}" height="37" width="37">
+        <img src="{% static 'images/10-qq-128.png' %}" height="37" width="37">
+        <img src="{% static 'images/book-face28.jpg' %}" height="37" width="37">
+        <img src="{% static 'images/tinder-512.png' %}" height="37" width="37">
+        <img src="{% static 'images/tictok.jpg' %}" height="37" width="37">
+        <img src="{% static 'images/twit.png' %}" height="37" width="37">
+
+    </div>
+
+    <br>
+    <script src="{% static '/js/search_submit.js' %}"></script>
+
+{% endblock %}
+
+
+
+
